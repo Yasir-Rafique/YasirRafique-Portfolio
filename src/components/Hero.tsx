@@ -55,7 +55,7 @@ export default function Hero() {
 
             {/* GitHub */}
             <a
-              href="https://github.com/Yasir-Rafique"
+              href="https://www.github.com/Yasir-Rafique"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition"
@@ -66,7 +66,7 @@ export default function Hero() {
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com/in/yasir-rafique"
+              href="https://www.linkedin.com/in/yasir-rafique/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition"

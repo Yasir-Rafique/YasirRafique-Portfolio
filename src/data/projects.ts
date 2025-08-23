@@ -1,5 +1,3 @@
-// src/data/projects.ts
-
 const projects = {
   Personal: [
     {
@@ -112,20 +110,74 @@ const projects = {
   ],
   GitHub: [
     {
-      title: "Portfolio Template",
+      title: "REST API Starter Kit",
       role: "",
-      description: "A clean portfolio template built with React + Tailwind.",
-      stack: ["React", "Tailwind"],
+      description:
+        "A modern, beginner-friendly REST API boilerplate for Node.js. Features user authentication with JWT, modular project structure, clean code, and MongoDB integration. Ideal for building scalable APIs, learning backend best practices, or starting a new project!",
+      stack: [
+        "Node.js",
+        "Express",
+        "MongoDB (Mongoose)",
+        "JWT (jsonwebtoken)",
+        "ESLint & Prettier",
+        "dotenv",
+      ],
       live: "",
-      source: "https://github.com/username/portfolio",
+      source: "https://github.com/Yasir-Rafique/rest-api-starter",
     },
     {
-      title: "Portfolio Template",
+      title: "Toolbelt-js",
       role: "",
-      description: "A clean portfolio template built with React + Tailwind.",
-      stack: ["React", "Tailwind"],
+      description:
+        "Toolbelt-js is the one-stop collection of modern, lightweight JavaScript utility functions fully tested, TypeScript-ready, and easy to drop into any project with a single import.",
+      stack: ["TypeScript", "Node.js", "Jest"],
       live: "",
-      source: "https://github.com/username/portfolio",
+      source: "https://github.com/Yasir-Rafique/toolbelt-js",
+    },
+    {
+      title: "Checkmate (Contributor)",
+      role: "Relax monitor URL validation",
+      description:
+        "Checkmate is an open-source, self-hosted tool designed to track and monitor server hardware, uptime, response times, and incidents in real-time with beautiful visualizations.",
+      stack: ["NodeJS", "JavaScript"],
+      live: "",
+      source: "https://github.com/bluewave-labs/Checkmate/pull/2632",
+    },
+    {
+      title: "Puter (Contributor)",
+      role: "Apply Prettier formatting and add formatting config",
+      description:
+        "Puter is an advanced, open-source internet operating system designed to be feature-rich, exceptionally fast, and highly extensible. It aims to provide a seamless and efficient user experience, combining the power of a traditional OS with the accessibility of web technologies.",
+      stack: ["NodeJS", "JavaScript", "Docker"],
+      live: "",
+      source: "https://github.com/HeyPuter/puter/pull/1347",
+    },
+    {
+      title: "Awesome NodeJS (Contributor)",
+      role: "Add white stroke to SVG logo text for dark mode visibility",
+      description: "Delightful Node.js packages and resources. ",
+      stack: ["NodeJS", "JavaScript", "SVG"],
+      live: "",
+      source: "https://github.com/sindresorhus/awesome-nodejs/pull/1331",
+    },
+    {
+      title: "Social Media React Native Learning Project",
+      role: "",
+      description:
+        "This project is part of my learning journey in React Native. I built it while following the Udemy course by Nata Vacheishvili. It features user authentication, profile management, post creation, and a simple feed. The goal was to understand React Native fundamentals and best practices.",
+      stack: ["React Native", "JavaScript", "Firebase"],
+      live: "",
+      source:
+        "https://github.com/Yasir-Rafique/SocialMedia-reactNative-learning-app",
+    },
+    {
+      title: "Cinema Ticket API",
+      role: "",
+      description:
+        "The solution includes a cinema ticket booking service with the capability to handle multiple ticket types (Adult, Child, Infant), enforce purchase rules, and provide testing with Jest.",
+      stack: ["Javascript", "Node.js", "Jest"],
+      live: "",
+      source: "https://github.com/Yasir-Rafique/Cinema-Ticket-Solution",
     },
   ],
 };

@@ -1,4 +1,3 @@
-// utils/animations.ts
 import type { Variants } from "framer-motion";
 
 // 🔹 Fade in + slide up

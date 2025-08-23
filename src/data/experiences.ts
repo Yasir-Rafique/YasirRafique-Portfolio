@@ -1,4 +1,3 @@
-// src/data/experiences.ts
 export const experiences = [
   {
     role: " Senior Web Backend Developer (Node.js)",

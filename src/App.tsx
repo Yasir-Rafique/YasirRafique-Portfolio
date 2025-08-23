@@ -5,6 +5,7 @@ import Contact from "./components/Contact";
 import Reveal from "./components/Reveal";
 import TechPopup from "./components/Popup";
 import BackgroundLayout from "./components/Background";
+import VisitorTracker from "./components/VisitorTracker";
 import Latest from "./components/Latest";
 import Projects from "./pages/Projects";
 import Experience from "./pages/Experience";
@@ -16,9 +17,8 @@ export default function App() {
   return (
     <>
       <BackgroundLayout />
-      <div className="min-h-screen text-gray-900 dark:text-gray-100 transition-colors">
+      <div className="min-h-screen">
         <Navbar />
-
         <main className="max-w-6xl mx-auto px-4">
           <TechPopup />
           <Hero />
@@ -51,6 +51,7 @@ export default function App() {
         </main>
       </div>
       <Toaster position="bottom-center" reverseOrder={false} />
+      <VisitorTracker />
     </>
   );
 }

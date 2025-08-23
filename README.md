@@ -3,7 +3,7 @@
 Welcome to the repository of my personal developer portfolio!  
 This portfolio is built with **React + TypeScript + TailwindCSS**, deployed on **Cloudflare Pages**, and features smooth animations, dark mode support, and a custom background particle animation.  
 
-🌐 **Live Demo:** [yasir.dev](https://yasir.dev) _(replace with your actual domain)_
+🌐 **Live Demo:** [yasir.dev](https://yasir.dev)
 
 ---
 

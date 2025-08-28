@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { useInView } from "framer-motion";
-import projects from "../data/projects";
+import { projects } from "../data/projects";
 import { fadeInUp, staggerContainer } from "../utils/animations";
 
 const categories = ["Personal", "Experience", "GitHub"];

@@ -18,6 +18,15 @@ export const publications = [
   },
   {
     title:
+      "Taming Memory Leaks in Node.js: A Deep Dive | Muhammad Yasir Rafique | Conf42 JS 2024",
+    platform: "Youtube | Conf42",
+    date: "October 2024",
+    description:
+      "Memory leaks occur when a program retains memory it no longer needs, leading to performance degradation. In this talk, we’ll explore how memory leaks manifest in Node.js applications and their impact on system resources. We’ll discuss common causes of memory leaks, including unintentional global variables, forgotten timers or callbacks, and improper caching strategies. Attendees will learn practical techniques for detecting memory leaks using tools like Node.js built-in profiler, Chrome DevTools, and third-party libraries. We’ll also cover strategies for preventing memory leaks through best coding practices and effective resource management.",
+    link: "https://www.youtube.com/watch?v=A1zbvng3KtM",
+  },
+  {
+    title:
       "Artificial Intelligence in Cybersecurity: New Solutions for New Threats",
     platform: "Dev Community",
     date: "October 2024",

@@ -1,4 +1,4 @@
-const projects = {
+export const projects = {
   Personal: [
     {
       title: "Read Me Genie",
@@ -45,7 +45,7 @@ const projects = {
     },
     {
       title: "University Website – Abasyn University Islamabad",
-      role: "Role: Frontend Developer | Year: 2018",
+      role: "Frontend Developer | Year: 2018",
       description:
         "Developed the User Interface (UI) of the university website using HTML, CSS, and Bootstrap. Contributed to the Django-based backend integration, ensuring smooth communication between frontend and backend. Focused on a responsive and accessible design, enhancing user experience across multiple devices",
       stack: ["Python", "Django", "HTML", "CSS", "Bootstrap", "JavaScript"],
@@ -181,5 +181,3 @@ const projects = {
     },
   ],
 };
-
-export default projects;

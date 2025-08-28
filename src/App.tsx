@@ -10,6 +10,7 @@ import Latest from "./components/Latest";
 import Projects from "./pages/Projects";
 import Experience from "./pages/Experience";
 import Publications from "./pages/Publications";
+import Achievements from "./pages/Achievements";
 
 import { Toaster } from "react-hot-toast";
 
@@ -20,12 +21,17 @@ export default function App() {
       <div className="min-h-screen">
         <Navbar />
         <main className="max-w-6xl mx-auto px-4">
-          <TechPopup />
+          {/* <TechPopup /> */}
           <Hero />
           <Latest />
           <section id="tech" className="py-12">
             <Reveal animation="fade-up">
               <TechStack />
+            </Reveal>
+          </section>
+          <section id="achievements" className="py-12">
+            <Reveal animation="fade-left">
+              <Achievements />
             </Reveal>
           </section>
           <section id="projects" className="py-12">

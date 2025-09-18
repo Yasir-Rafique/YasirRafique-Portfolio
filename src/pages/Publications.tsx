@@ -1,3 +1,4 @@
+// src/sections/Publications.tsx
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../utils/animations";
@@ -10,8 +11,10 @@ export default function Publications() {
     <section id="publications" className="max-w-6xl mx-auto px-6 py-16">
       <motion.h2
         className="text-3xl font-bold mb-12 text-center text-indigo-400"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         Publications
       </motion.h2>
@@ -21,7 +24,8 @@ export default function Publications() {
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
           className="grid md:grid-cols-3 gap-8"
         >
           {(showAllPublications ? publications : publications.slice(0, 6)).map(
@@ -32,13 +36,13 @@ export default function Publications() {
                 variants={fadeInUp}
                 whileHover={{
                   scale: 1.03,
-                  boxShadow: "0px 8px 20px rgba(99, 102, 241, 0.35)", // indigo glow
+                  boxShadow: "0px 8px 20px rgba(99, 102, 241, 0.25)",
                 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{
                   type: "spring",
-                  stiffness: 200,
-                  damping: 12,
+                  stiffness: 120,
+                  damping: 18,
                 }}
               >
                 {/* Title */}

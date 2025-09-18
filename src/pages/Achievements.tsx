@@ -33,7 +33,8 @@ export default function Achievements() {
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
           className="grid gap-8 md:grid-cols-2"
         >
           {achievements
@@ -57,10 +58,10 @@ export default function Achievements() {
                   variants={fadeInUp}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0px 8px 20px rgba(0,0,0,0.35)",
+                    boxShadow: "0px 8px 20px rgba(99, 102, 241, 0.25)",
                   }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 12 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 18 }}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>

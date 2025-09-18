@@ -22,16 +22,20 @@ export default function Experience() {
     <section id="experience" className="max-w-6xl mx-auto px-6 py-16">
       <motion.h2
         className="text-3xl font-bold mb-12 text-center text-teal-400"
-        //initial={{ opacity: 0, y: -20 }}
-        //animate={{ opacity: 1, y: 0 }}
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         Experience
       </motion.h2>
+
       <AnimatePresence mode="wait">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
           className="relative border-l border-gray-700 pl-6 space-y-12"
         >
           {experiences
@@ -48,13 +52,13 @@ export default function Experience() {
                   variants={fadeInUp}
                   whileHover={{
                     scale: 1.03,
-                    boxShadow: "0px 8px 20px rgba(0,0,0,0.35)",
+                    boxShadow: "0px 8px 20px rgba(99, 102, 241, 0.25)",
                   }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 12 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 18 }}
                 >
                   {/* Dot */}
-                  <div className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-teal-500 border-2 border-gray-900"></div>
+                  <div className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-teal-500 border-2 border-gray-900" />
 
                   {/* Content */}
                   <div className="flex-1">

@@ -62,7 +62,7 @@ export default function Navbar() {
             return (
               <motion.a
                 key={i.id}
-                href={`/#${i.id}`}
+                href={`#${i.id}`}
                 className="relative text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
@@ -131,7 +131,7 @@ export default function Navbar() {
               return (
                 <motion.a
                   key={i.id}
-                  href={`/#${i.id}`}
+                  href={`#${i.id}`}
                   onClick={() => setOpen(false)}
                   className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
                   whileHover={{ scale: 1.05 }}

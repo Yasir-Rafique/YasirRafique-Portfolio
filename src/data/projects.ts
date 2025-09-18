@@ -1,11 +1,31 @@
 export const projects = {
   Personal: [
     {
+      title: "ScribeLens",
+      role: "Full-Stack Developer | Year 2025",
+      description:
+        "ScribeLens is my first Generative AI + Retrieval-Augmented Generation (RAG) app, built to provide private, document-focused Q&A without relying on third-party chatbots. Users can upload PDFs, which are converted into embeddings and stored in a local vector store. When questions are asked, the system retrieves the most relevant passages and generates accurate, context-aware answers always grounded in the uploaded docs. With a Next.js App Router backend, OpenAI embeddings, and zero external storage (files are never saved, and embeddings are deleted permanently on request), ScribeLens ensures both speed and privacy. This project taught me the foundations of RAG systems, vector search, and ethical AI development.",
+      resumeBio:
+        "ScribeLens is my first **Generative AI + Retrieval-Augmented Generation (RAG) app**, built to provide private, document-focused Q&A without relying on third-party chatbots",
+      stack: [
+        "**Next.js",
+        "TypeScript",
+        "OpenAI API",
+        "Vector Store (file-based)",
+        "TailwindCSS**",
+      ],
+      live: "https://scribe-lens.up.railway.app/",
+      source: "https://github.com/Yasir-Rafique/scribe-lens",
+    },
+    {
       title: "Read Me Genie",
       role: "React Developer | Year 2025",
       description:
         "ReadMeGenie is a web app I built to help developers effortlessly create beautiful, personalized GitHub profile READMEs without needing to write any markdown or code. With a sleek, modern UI built on React, Vite, and Material UI, ReadMeGenie guides users through a simple form to gather their bio, skills, projects, and social links. It features a real-time live markdown preview, dynamic GitHub stats card integration, and instant one-click copy/download functionality. The goal is to make it easy for anyone to showcase their story, skills, and achievements in a visually appealing way helping developers put their best foot forward on GitHub.",
-      stack: ["React", "Vite", "Material UI", "TypeScript"],
+
+      resumeBio:
+        "ReadMeGenie is a web app I built to help developers effortlessly create beautiful, **personalized GitHub profile READMEs** without needing to write any markdown or code.",
+      stack: ["**React", "Vite", "Material UI", "TypeScript**"],
       live: "https://read-me-genie.netlify.app/",
       source: "https://github.com/Yasir-Rafique/readmegenie",
     },
@@ -14,7 +34,9 @@ export const projects = {
       role: "React Developer | Year 2025",
       description:
         "JSON2TS is a free, open-source web tool that instantly converts any JSON data into ready-to-use TypeScript interfaces. Built with Next.js, React, and Tailwind CSS, it’s designed to save developers time and reduce manual coding errors. Features: • Converts JSON to clean, valid TypeScript code • Handles nested objects and arrays • Fast, intuitive, and mobile-friendly UI",
-      stack: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+      resumeBio:
+        "JSON2TS is a free, open-source web tool that instantly **converts any JSON data into ready-to-use TypeScript** interfaces.",
+      stack: ["**React", "Next.js", "Tailwind CSS", "TypeScript**"],
       live: "https://json2ts-ashy.vercel.app/",
       source: "https://github.com/Yasir-Rafique/json2ts",
     },
@@ -23,7 +45,9 @@ export const projects = {
       role: "Freelance Lead Backend Developer | Year 2023 – 2024",
       description:
         "Designed and developed backend functionalities using Node.js and Python, ensuring scalability and performance. Managed A2 server hosting, optimizing deployment and server configurations. Led database architecture and frontend development, ensuring seamless data flow and system efficiency. Integrated SQL, JavaScript, and Bootstrap for a responsive and structured platform. Improved system reliability through backend optimizations and structured API implementations.",
-      stack: ["Node.js", "Python", "MySQL", "JavaScript", "Bootstrap"],
+      resumeBio:
+        "Designed and developed backend functionalities using Node.js and Python, ensuring scalability and performance.",
+      stack: ["**Node.js", "Python", "MySQL", "JavaScript", "Bootstrap**"],
       live: "",
       source: "",
     },
@@ -32,23 +56,27 @@ export const projects = {
       role: "Freelance Node.js Backend Developer | Year: 2021",
       description:
         "Developed robust RESTful APIs for core functionalities, ensuring smooth client-server communication. Integrated Agora for real-time audio/video calls and Stripe for secure online payments. Optimized MongoDB queries to enhance system performance and response times. Ensured API security and authentication using industry best practices.",
+      resumeBio:
+        "Developed robust RESTful APIs and **Integrated Agora for real-time audio/video calls and Stripe** for secure online payments. Optimized MongoDB queries to enhance system performance and response times",
       stack: [
-        "Node.js",
+        "**Node.js",
         "Express.js",
         "JavaScript",
         "MongoDB",
         "Agora",
-        "Stripe",
+        "Stripe**",
       ],
       live: "",
       source: "",
     },
     {
-      title: "University Website – Abasyn University Islamabad",
+      title: "University Website - Abasyn University Islamabad",
       role: "Frontend Developer | Year: 2018",
       description:
-        "Developed the User Interface (UI) of the university website using HTML, CSS, and Bootstrap. Contributed to the Django-based backend integration, ensuring smooth communication between frontend and backend. Focused on a responsive and accessible design, enhancing user experience across multiple devices",
-      stack: ["Python", "Django", "HTML", "CSS", "Bootstrap", "JavaScript"],
+        "Developed the User Interface (UI) of the university website using HTML, CSS, and Bootstrap. Contributed to the **Django-based backend integration**, ensuring smooth communication between frontend and backend. Focused on a responsive and accessible design, enhancing user experience across multiple devices",
+      resumeBio:
+        "Developed the User Interface (UI) of the university website using HTML, CSS, and Bootstrap.",
+      stack: ["**Python", "Django", "HTML", "CSS", "Bootstrap", "JavaScript**"],
       live: "https://www.abasynisb.edu.pk/",
       source: "",
     },

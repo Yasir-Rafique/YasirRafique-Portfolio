@@ -73,8 +73,8 @@ export default function Projects() {
                   scale: 1.03,
                   boxShadow: "0px 8px 20px rgba(0,0,0,0.35)",
                 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 200, damping: 12 }}
                 className="bg-gray-900 rounded-2xl p-6 border border-gray-800 shadow-lg"
               >
                 <h3 className="text-xl font-semibold text-white">

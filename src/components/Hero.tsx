@@ -28,7 +28,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeInUp} className="mt-4 text-lg max-w-xl">
-            I’m a <strong>Senior Backend Engineer</strong> with 5+ years of
+            I’m a <strong>Senior Web Backend Engineer</strong> with 5+ years of
             expertise in building scalable{" "}
             <strong>
               APIs, cloud-native architectures, and high-performance
@@ -36,7 +36,9 @@ export default function Hero() {
             systems. While my core strength lies in{" "}
             <strong>backend development</strong>, I’m expanding into{" "}
             <strong>full-stack engineering</strong>, bridging backend
-            reliability with engaging frontend experiences.
+            reliability with engaging frontend experiences. Currently, I’m also
+            exploring <strong>AI engineering, ethics, and applied GenAI</strong>
+            , aligning backend expertise with cutting-edge innovation.
           </motion.p>
 
           <motion.div variants={fadeInUp}>

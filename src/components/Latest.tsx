@@ -1,14 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { latest } from "../data/latest";
 
 export default function Latest() {
-  const updates = [
-    " Latest 👉",
-    "1: Just completed the IBM's 'Introduction to Artificial Intelligence (AI)' course! 🎉",
-    "2: Launched 'Read Me Genie' - a tool to create stunning GitHub READMEs effortlessly! 🚀",
-    "3: Completed Udemy's 'React Native - Mobile App Development (CLI) 2025 Edition' course! 📱",
-  ];
-
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
   const [wrapperWidth, setWrapperWidth] = useState(0);
@@ -33,8 +27,11 @@ export default function Latest() {
           delay: 3,
         }}
       >
-        {updates.map((u, i) => (
-          <span key={i}>{u}</span>
+        {latest.map((u, i) => (
+          <span key={i} className="mr-4">
+            {i === 0 && <span className="mr-4">Latest 👉 </span>}
+            {u}
+          </span>
         ))}
       </motion.div>
     </div>

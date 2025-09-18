@@ -120,7 +120,7 @@ export default function Navbar() {
           transition={{ type: "tween", duration: 0.3 }}
           className="md:hidden bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800"
         >
-          <div className="px-4 py-5 flex flex-col gap-4">
+          <div className="px-4 py-5 flex flex-col gap-4 items-center text-center">
             {navItems.map((i) => {
               if (i.id === "resume") {
                 return (
@@ -128,7 +128,7 @@ export default function Navbar() {
                     key={i.id}
                     to={i.route!}
                     onClick={() => setOpen(false)}
-                    className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
+                    className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors w-full text-center"
                   >
                     {i.label}
                   </Link>
@@ -142,7 +142,7 @@ export default function Navbar() {
                     handleScroll(i.id);
                     setOpen(false);
                   }}
-                  className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors w-full text-center"
                   whileHover={{ scale: 1.05 }}
                 >
                   {i.label}

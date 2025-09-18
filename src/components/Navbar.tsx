@@ -14,6 +14,13 @@ const navItems = [
   { id: "resume", label: "Resume", route: "/resume" },
 ];
 
+const handleScroll = (id: string) => {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
 export default function Navbar() {
   const [dark, setDark] = useState(() => {
     const saved =
@@ -50,6 +57,7 @@ export default function Navbar() {
               return (
                 <Link
                   key={i.id}
+                  onClick={() => handleScroll(i.id)}
                   to={i.route!}
                   target="_blank"
                   className="relative text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
@@ -62,7 +70,7 @@ export default function Navbar() {
             return (
               <motion.a
                 key={i.id}
-                href={`#${i.id}`}
+                href={`/#${i.id}`}
                 className="relative text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
@@ -131,7 +139,7 @@ export default function Navbar() {
               return (
                 <motion.a
                   key={i.id}
-                  href={`#${i.id}`}
+                  href={`/#${i.id}`}
                   onClick={() => setOpen(false)}
                   className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
                   whileHover={{ scale: 1.05 }}

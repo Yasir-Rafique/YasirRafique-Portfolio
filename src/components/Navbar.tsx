@@ -14,13 +14,6 @@ const navItems = [
   { id: "resume", label: "Resume", route: "/resume" },
 ];
 
-const handleScroll = (id: string) => {
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 export default function Navbar() {
   const [dark, setDark] = useState(() => {
     const saved =
@@ -39,16 +32,24 @@ export default function Navbar() {
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
 
+  // smooth scroll handler (prevents full re-render)
+  const handleScroll = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-gray-200 dark:border-gray-800 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <motion.a
-          href="#about"
+        <motion.button
+          onClick={() => handleScroll("about")}
           className="font-bold text-xl bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent"
           whileHover={{ scale: 1.05 }}
         >
           YasirR.
-        </motion.a>
+        </motion.button>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 items-center font-medium">
@@ -57,7 +58,6 @@ export default function Navbar() {
               return (
                 <Link
                   key={i.id}
-                  onClick={() => handleScroll(i.id)}
                   to={i.route!}
                   target="_blank"
                   className="relative text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
@@ -68,19 +68,18 @@ export default function Navbar() {
             }
 
             return (
-              <motion.a
+              <motion.button
                 key={i.id}
-                href={`/#${i.id}`}
+                onClick={() => handleScroll(i.id)}
                 className="relative text-sm text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
                 {i.label}
-                <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-indigo-500 transition-all group-hover:w-full" />
-              </motion.a>
+              </motion.button>
             );
           })}
 
-          {/* Theme toggle button */}
+          {/* Theme toggle */}
           <motion.button
             onClick={() => setDark((d) => !d)}
             aria-label="Toggle theme"
@@ -137,15 +136,17 @@ export default function Navbar() {
               }
 
               return (
-                <motion.a
+                <motion.button
                   key={i.id}
-                  href={`/#${i.id}`}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    handleScroll(i.id);
+                    setOpen(false);
+                  }}
                   className="text-gray-700 dark:text-gray-300 hover:text-indigo-500 transition-colors"
                   whileHover={{ scale: 1.05 }}
                 >
                   {i.label}
-                </motion.a>
+                </motion.button>
               );
             })}
           </div>

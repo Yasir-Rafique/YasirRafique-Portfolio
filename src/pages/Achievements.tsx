@@ -1,6 +1,7 @@
 // pages/Achievements.tsx
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "../utils/animations";
 import { achievements } from "../data/achievements";
 import type { Achievement } from "../data/achievements";
 
@@ -29,7 +30,12 @@ export default function Achievements() {
       </motion.h2>
 
       <AnimatePresence mode="wait">
-        <div className="grid gap-8 md:grid-cols-2">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="grid gap-8 md:grid-cols-2"
+        >
           {achievements
             .slice(0, showAllAchievements ? achievements.length : 4)
             .map((a: Achievement, index: number) => {
@@ -48,8 +54,7 @@ export default function Achievements() {
                 <motion.div
                   key={index}
                   className="bg-gray-900 border border-gray-800 rounded-xl p-6 shadow-md"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  variants={fadeInUp}
                   whileHover={{
                     scale: 1.03,
                     boxShadow: "0px 8px 20px rgba(0,0,0,0.35)",
@@ -168,7 +173,7 @@ export default function Achievements() {
                 </motion.div>
               );
             })}
-        </div>
+        </motion.div>
       </AnimatePresence>
 
       {/* Show More / Show Less Button */}

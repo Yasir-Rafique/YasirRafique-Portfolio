@@ -1,4 +1,23 @@
-export const publications = [
+export type Publications = {
+  title: string;
+  platform?: string;
+  date?: string;
+  description: string;
+  link?: string;
+  showResume?: boolean;
+};
+
+export const publications: Publications[] = [
+  {
+    title:
+      "Lean RAG MVPs: How to Build Retrieval-Augmented Tools Without Heavy Infrastructure",
+    platform: "Dev Community",
+    date: "September 2025",
+    description:
+      "Retrieval-Augmented Generation (RAG) is one of the most exciting ways to build AI tools today. It allows large language models (LLMs) to use external knowledge, making their answers more accurate and up to date. But there’s a catch: most guides and tutorials push you toward heavy setups, managed vector databases, planned frameworks, and lots of moving parts. That’s great if you’re running a large-scale system, but it’s overkill if you just want to test an idea or build a minimum viable product (MVP).",
+    link: "https://dev.to/yasir_rafique_27550feb631/lean-rag-mvps-how-to-build-retrieval-augmented-tools-without-heavy-infrastructure-4bfo",
+    showResume: true,
+  },
   {
     title:
       "When Code Collides: How to Prevent Data Loss in Node.js Apps with Cron Jobs and API Calls",
@@ -7,6 +26,7 @@ export const publications = [
     description:
       "This kind of “collision” between code is more common than we imagine. In this article, I’ll break down why this happens, how it can mess up your app, and most importantly - show you practical ways to fix it. Whether you’re building something big or just learning, these lessons can save you hours of debugging and a lot of headaches.",
     link: "https://dev.to/yasir_rafique_27550feb631/when-code-collides-how-to-prevent-data-loss-in-nodejs-apps-with-cron-jobs-and-api-calls-2l3n",
+    showResume: true,
   },
   {
     title: "Node.js Memory Leaks: A Guide to Detection and Resolution",
@@ -24,6 +44,7 @@ export const publications = [
     description:
       "Memory leaks occur when a program retains memory it no longer needs, leading to performance degradation. In this talk, we’ll explore how memory leaks manifest in Node.js applications and their impact on system resources. We’ll discuss common causes of memory leaks, including unintentional global variables, forgotten timers or callbacks, and improper caching strategies. Attendees will learn practical techniques for detecting memory leaks using tools like Node.js built-in profiler, Chrome DevTools, and third-party libraries. We’ll also cover strategies for preventing memory leaks through best coding practices and effective resource management.",
     link: "https://www.youtube.com/watch?v=A1zbvng3KtM",
+    showResume: true,
   },
   {
     title:
@@ -41,6 +62,7 @@ export const publications = [
     description:
       "When we talk about web development, we cannot help but mention JavaScript. Throughout the past several decades, JavaScript frameworks have been the backbone of web development, defining its direction. The capabilities of JavaScript tools have been steadily growing, enabling the creation of faster, more complex, and more efficient websites. This evolution has made a huge leap from jQuery to React, Angular, and Vue.js. We will look at the major milestones in the evolution of the JavaScript framework that have defined web development as we know it today.",
     link: "https://dzone.com/articles/javascript-frameworks-past-present-and-future",
+    showResume: true,
   },
   {
     title: "Serverless Computing in 2024",

@@ -1,9 +1,11 @@
 // src/sections/Experience.tsx
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer } from "../utils/animations";
 import { experiences } from "../data/experiences";
 
 export default function Experience() {
+  const [showAllExperiences, setShowAllExperiences] = useState(false);
   const [expanded, setExpanded] = useState(
     Array(experiences.length).fill(false)
   );
@@ -26,78 +28,47 @@ export default function Experience() {
         Experience
       </motion.h2>
 
-      <div className="relative border-l border-gray-700 pl-6 space-y-12">
-        {experiences.map((exp, index) => {
-          const descToShow = expanded[index]
-            ? exp.description
-            : exp.description.slice(0, 3);
-          return (
-            <motion.div
-              key={index}
-              className="relative"
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2 }}
-            >
-              {/* Dot */}
-              <div className="absolute -left-3 top-2 w-5 h-5 rounded-full bg-teal-500 border-2 border-gray-900"></div>
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+        className="relative border-l border-gray-700 pl-6 space-y-12"
+      >
+        {experiences
+          .slice(0, showAllExperiences ? experiences.length : 3)
+          .map((exp, index) => {
+            const descToShow = expanded[index]
+              ? exp.description
+              : exp.description.slice(0, 3);
 
-              {/* Content */}
-              <div className="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800 flex justify-between items-center">
-                {/* Left content */}
+            return (
+              <motion.div
+                key={index}
+                className="relative bg-gray-900 p-6 rounded-xl shadow-md border border-gray-800 flex justify-between items-center"
+                variants={fadeInUp}
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: "0px 8px 20px rgba(99, 102, 241, 0.25)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 200, damping: 12 }}
+              >
+                {/* Dot */}
+                <div className="absolute -left-3 top-6 w-5 h-5 rounded-full bg-teal-500 border-2 border-gray-900"></div>
+
+                {/* Content */}
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white">
                     {exp.role} @ {exp.company}
                   </h3>
                   <p className="text-sm text-gray-400 mb-3">{exp.duration}</p>
+
                   <div className="flex items-center gap-4 mb-3">
                     <span className="flex items-center gap-1 text-sm text-gray-400">
-                      <svg
-                        width="16"
-                        height="16"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        className="inline-block mr-1"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          d="M12 2C7.03 2 3 6.03 3 11c0 5.25 7.5 11 9 11s9-5.75 9-11c0-4.97-4.03-9-9-9Z"
-                        />
-                        <circle
-                          cx="12"
-                          cy="11"
-                          r="3"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                      {exp.location}
+                      {/* location icon */}…{exp.location}
                     </span>
                     <span className="flex items-center gap-1 text-sm text-gray-400">
-                      <svg
-                        width="16"
-                        height="16"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        className="inline-block mr-1"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          d="M4 7V5a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v2"
-                        />
-                        <rect
-                          width="20"
-                          height="14"
-                          x="2"
-                          y="7"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          rx="2"
-                        />
-                      </svg>
-                      {exp.workType}
+                      {/* work type icon */}…{exp.workType}
                     </span>
                   </div>
 
@@ -106,14 +77,16 @@ export default function Experience() {
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
+
                   {exp.description.length > 3 && (
                     <button
-                      className="mt-2 text-xs text-teal-400 hover:underline focus:outline-none"
+                      className="mt-2 text-xs text-gray-300 hover:underline focus:outline-none"
                       onClick={() => handleToggle(index)}
                     >
                       {expanded[index] ? "Show Less" : "Show More"}
                     </button>
                   )}
+
                   <div className="flex flex-wrap gap-2 mt-3">
                     {exp.stack.map((tech) => (
                       <span
@@ -136,11 +109,24 @@ export default function Experience() {
                     />
                   </div>
                 )}
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
+              </motion.div>
+            );
+          })}
+      </motion.div>
+
+      {/* Show More / Show Less Button */}
+      {experiences.length > 3 && (
+        <div className="text-center mt-8">
+          <button
+            onClick={() => setShowAllExperiences(!showAllExperiences)}
+            className="text-sm px-4 py-2 rounded-lg bg-gray-800 text-gray-300 hover:bg-indigo-500 hover:text-white transition-colors duration-300"
+          >
+            {showAllExperiences
+              ? "Show Less"
+              : `Show More (${experiences.length - 3})`}
+          </button>
+        </div>
+      )}
     </section>
   );
 }

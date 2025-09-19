@@ -6,6 +6,10 @@ import {
   FaStripe,
   FaGithub,
   FaBitbucket,
+  FaBrain,
+  //FaRobot,
+  //FaDatabase,
+  FaSearch,
 } from "react-icons/fa";
 import {
   SiExpress,
@@ -21,6 +25,7 @@ import {
   SiReact,
   SiHubspot,
   SiSocketdotio,
+  SiOpenai,
 } from "react-icons/si";
 
 export const techStack = [
@@ -57,4 +62,12 @@ export const techStack = [
   { name: "Stripe", tag: "tools", icon: FaStripe },
   { name: "GitHub", tag: "tools", icon: FaGithub },
   { name: "Imin", tag: "tools" }, // no icon
+
+  // --- AI / ML ---
+  { name: "OpenAI", tag: "ai", icon: SiOpenai },
+  //{ name: "LangChain", tag: "ai" }, // icon
+  { name: "Generative AI (Gen AI)", tag: "ai", icon: FaBrain }, // conceptual
+  { name: "RAG (Retrieval-Augmented Generation)", tag: "ai", icon: FaSearch }, // conceptual
+  //{ name: "Vector Databases (FAISS)", tag: "ai" }, // no icon
+  { name: "Embeddings", tag: "ai" }, // conceptual
 ];

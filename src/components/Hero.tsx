@@ -28,7 +28,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeInUp} className="mt-4 text-lg max-w-xl">
-            I’m a <strong>Senior Web Backend Engineer</strong> with 5+ years of
+            I’m a <strong>Senior Web Backend Engineer</strong> with 4+ years of
             expertise in building scalable{" "}
             <strong>
               APIs, cloud-native architectures, and high-performance

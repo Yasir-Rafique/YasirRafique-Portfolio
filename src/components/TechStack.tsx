@@ -15,7 +15,8 @@ export default function TechStack() {
         className="text-3xl font-bold mb-8 text-center"
         variants={fadeInUp}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         My Tech Stack
       </motion.h2>
@@ -25,17 +26,18 @@ export default function TechStack() {
         className="flex flex-wrap gap-4 justify-center"
         variants={fadeInUpIcon}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
       >
         {techStack.map((t) => {
           const Icon = t.icon;
           return (
             <motion.div
               key={t.name}
-              className="flex items-center gap-2 px-4 py-2 border rounded-xl shadow-sm 
-                 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm cursor-pointer"
+              className="flex items-center gap-2 px-4 py-2 border rounded-xl shadow-sm bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm cursor-pointer"
               variants={fadeInUpIcon}
               whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 120, damping: 18 }}
             >
               {Icon && <Icon className="text-xl text-blue-500" />}
               <span className="font-medium">{t.name}</span>

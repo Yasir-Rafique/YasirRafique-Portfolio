@@ -11,6 +11,7 @@ export type Achievement = {
   description: string[];
   tags?: string[];
   proofs?: Proof[];
+  showResume?: boolean;
 };
 
 export const achievements: Achievement[] = [
@@ -31,6 +32,7 @@ export const achievements: Achievement[] = [
         label: "Visitor & client growth (graph screenshot)",
       },
     ],
+    showResume: true,
   },
   {
     title: "5 GitHub achievements during Open-source contributions",
@@ -53,6 +55,7 @@ export const achievements: Achievement[] = [
         label: "GitHub Achievements (screenshot)",
       },
     ],
+    showResume: false,
   },
   {
     title:
@@ -86,6 +89,7 @@ export const achievements: Achievement[] = [
         label: "Read article on DZone",
       },
     ],
+    showResume: true,
   },
   {
     title:
@@ -119,5 +123,6 @@ export const achievements: Achievement[] = [
         label: "MY Talk Banner (screenshot)",
       },
     ],
+    showResume: true,
   },
 ];

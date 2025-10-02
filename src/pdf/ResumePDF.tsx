@@ -17,13 +17,15 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     lineHeight: 1.35,
   },
+
+  // Header
   header: {
     marginBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
     paddingBottom: 6,
   },
-  name: { fontSize: 18, fontWeight: "bold" },
+  name: { fontSize: 18, fontWeight: "bold" }, // keep left aligned
   title: { fontSize: 11, marginTop: 8, color: "#333" },
   contactRow: {
     flexDirection: "row",
@@ -31,19 +33,27 @@ const styles = StyleSheet.create({
     marginTop: 6,
     flexWrap: "wrap" as any,
   },
-  contactLink: { color: "#1f6feb", textDecoration: "underline", fontSize: 9 },
+  contactLink: {
+    color: "#1f6feb",
+    textDecoration: "underline",
+    fontSize: 9,
+    textAlign: "justify", // ensure links wrap neatly
+  },
 
+  // Sections
   section: { marginBottom: 10 },
-  sectionTitle: { fontSize: 14, fontWeight: "bold", marginBottom: 6 },
-  subTitle: { fontSize: 12, fontWeight: "bold" },
-  subHighlight: { fontSize: 10, fontWeight: "bold" },
-  smallText: { fontSize: 10, color: "#333" },
-  listItem: { marginBottom: 2 },
+  sectionTitle: { fontSize: 14, fontWeight: "bold", marginBottom: 6 }, // keep left aligned
+  subTitle: { fontSize: 12, fontWeight: "bold" }, // keep left aligned
+  subHighlight: { fontSize: 10, fontWeight: "bold", textAlign: "justify" },
+  smallText: { fontSize: 10, color: "#333", textAlign: "justify" }, // 👈 justified
+  listItem: { marginBottom: 2, textAlign: "justify" },
 
+  // Highlights
   highlightsGrid: { flexDirection: "row", gap: 8 },
   highlightsCol: { flex: 1 },
   highlightBlock: { marginBottom: 6 },
 
+  // Two-column layouts
   twoCol: { flexDirection: "row", gap: 12 },
   col: { flex: 1 },
 });
@@ -211,28 +221,25 @@ export default function ResumePDF(props: ResumePDFProps) {
               </Link>
             )}
             {basics.github && (
-              <Link src={`https://${basics.github}`} style={styles.contactLink}>
+              <Link src={`${basics.github}`} style={styles.contactLink}>
                 GitHub
               </Link>
             )}
             {basics.linkedin && (
-              <Link
-                src={`https://${basics.linkedin}`}
-                style={styles.contactLink}
-              >
+              <Link src={`${basics.linkedin}`} style={styles.contactLink}>
                 LinkedIn
               </Link>
             )}
             {basics.portfolio && (
-              <Link
-                src={`https://${basics.portfolio}`}
-                style={styles.contactLink}
-              >
+              <Link src={`${basics.portfolio}`} style={styles.contactLink}>
                 Portfolio
               </Link>
             )}
             {basics.location && (
               <Text style={styles.smallText}>{basics.location}</Text>
+            )}
+            {basics.phone && (
+              <Text style={styles.smallText}>{basics.phone}</Text>
             )}
           </View>
         </View>

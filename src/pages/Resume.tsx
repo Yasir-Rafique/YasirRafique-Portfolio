@@ -342,6 +342,16 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                   Email
                 </a>
               )}
+              {r.basics.location && (
+                <p className="px-3 py-1 border rounded text-xs text-indigo-60">
+                  {r.basics.location}
+                </p>
+              )}
+              {r.basics.phone && (
+                <p className="px-3 py-1 border rounded text-xs text-indigo-60">
+                  {r.basics.phone}
+                </p>
+              )}
             </div>
           </section>
 

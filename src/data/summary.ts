@@ -7,8 +7,10 @@ export const basics = {
   linkedin: "https://linkedin.com/in/yasir-rafique",
   github: "https://github.com/Yasir-Rafique",
   portfolio: "https://yasirrafique-portfolio.netlify.app",
-  location: "Wembley, England",
-  phone: "+44 7734 047215",
+  //location: "Wembley, England",
+  location: "Islamabad, Pakistan (Open to Relocation)",
+  //phone: "+44 7734 047215",
+  phone: "+92 334 9982223",
 };
 
 export const resumeSummary: string = `

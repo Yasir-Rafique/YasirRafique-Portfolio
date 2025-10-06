@@ -3,11 +3,14 @@ import { useEffect } from "react";
 export default function VisitorTracker() {
   useEffect(() => {
     const updateVisitorCount = async () => {
-      if (
-        window.location.hostname === "localhost" ||
-        "127.0.0.1" ||
-        "localhost:5173"
-      ) {
+      const isLocal = [
+        "localhost",
+        "127.0.0.1",
+        "localhost:5173",
+        "localhost:8888",
+      ].includes(window.location.hostname);
+
+      if (isLocal) {
         console.log("Skipping visitor count in local development");
         return;
       }

@@ -32,8 +32,8 @@ function generateInitialsAvatar(name: string): string {
     .join("")
     .slice(0, 2);
 
-  const bgColor = "#e5e7eb"; // light gray
-  const textColor = "#1f2937"; // dark gray
+  const bgColor = "#e5e7eb";
+  const textColor = "#1f2937";
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
       <rect width="100" height="100" fill="${bgColor}" rx="50"/>

@@ -28,7 +28,7 @@ export default function Testimonials() {
   }, []);
 
   console.log("length", testimonials.length);
-  if (testimonials.length < 1) {
+  if (testimonials.length <= 1) {
     return (
       <section id="testimonials" className="max-w-6xl mx-auto px-6 py-16">
         {/* <h2 className="text-3xl font-bold mb-6 text-center text-indigo-400"> Testimonials </h2> */}{" "}

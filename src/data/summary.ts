@@ -14,7 +14,7 @@ export const basics = {
 };
 
 export const resumeSummary: string = `
-Backend Engineer with **4+ years of experience designing scalable APIs**, cloud-native systems, and event-driven architectures. Strong expertise in **Node.js, RESTful services, AWS, and database optimization**, with proven success in integrating third-party APIs and delivering secure, high-performance solutions. Skilled in OpenActive-compliant APIs and recognized for building AI-powered developer tools and real-time communication features. Currently advancing in **AI engineering, GenAI, and ethical practices**, combining backend reliability with emerging technologies to drive impactful results.
+Backend Engineer with **5+ years of experience designing scalable APIs**, cloud-native systems, and event-driven architectures. Strong expertise in **Node.js, RESTful services, AWS, and database optimization**, with proven success in integrating third-party APIs and delivering secure, high-performance solutions. Skilled in OpenActive-compliant APIs and recognized for building AI-powered developer tools and real-time communication features. Currently advancing in **AI engineering, GenAI, and ethical practices**, combining backend reliability with emerging technologies to drive impactful results.
 `;
 
 // export const resumeSummary: string = `

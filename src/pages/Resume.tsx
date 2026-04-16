@@ -3,6 +3,16 @@ import { pdf } from "@react-pdf/renderer";
 import ResumePDF from "../pdf/ResumePDF";
 import ReactMarkdown from "react-markdown";
 
+import { useLocation } from "react-router-dom";
+
+// SG versions
+import {
+  resumeSummary as resumeSummarySG,
+  basics as basicsSG,
+} from "../data/summary.sg";
+import experiencesSG from "../data/experiences.sg";
+import skillsSG from "../data/skills.sg";
+
 import { experiences as externalExperiences } from "../data/experiences";
 import { education as externalEducation } from "../data/education";
 import { projects as externalProjects } from "../data/projects";
@@ -96,24 +106,31 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
     ...(data ?? {}),
   } as ResumeData;
 
-  const experiencesToShow: ExternalExperience[] = (
-    externalExperiences && externalExperiences.length
-      ? externalExperiences
-      : r.experiences ?? []
-  ) as ExternalExperience[];
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const market = params.get("market");
+
+  const isSG = market === "sg";
+
+  const finalSummary = isSG ? resumeSummarySG : resumeSummary;
+  const finalBasics = isSG ? basicsSG : basics;
+  const finalExperiences = isSG ? experiencesSG : externalExperiences;
+  const finalSkills = isSG ? skillsSG : skills;
+
+  const experiencesToShow: ExternalExperience[] = finalExperiences;
 
   // filter secondary sections by showResume flag (only show if showResume === true)
   const achievementsForResume = (achievements || []).filter(
-    (a: any) => a.showResume === true
+    (a: any) => a.showResume === true,
   );
   const publicationsForResume = (publications || []).filter(
-    (p: any) => p.showResume === true
+    (p: any) => p.showResume === true,
   );
   const speakingForResume = (speaking || []).filter(
-    (s: any) => s.showResume === true
+    (s: any) => s.showResume === true,
   );
   const certificationsForResume = (certifications || []).filter(
-    (c: any) => c.showResume === true
+    (c: any) => c.showResume === true,
   );
 
   // modal + generator state
@@ -128,11 +145,11 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
       // Create the PDF document element. ResumePDF should accept pageSize prop.
       const doc = (
         <ResumePDF
-          basics={r.basics}
-          summary={r.summary}
+          basics={finalBasics}
+          summary={finalSummary}
           //highlights={r.highlights}
-          skills={skills}
-          experiences={experiencesToShow}
+          skills={finalSkills}
+          experiences={finalExperiences}
           education={externalEducation}
           projects={externalProjects}
           publications={publications}
@@ -170,9 +187,9 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
         {/* Header: name, title, quick links */}
         <header className="mb-4 text-center">
           <h1 className="text-3xl font-extrabold leading-tight">
-            {r.basics.name}
+            {finalBasics.name}
           </h1>
-          <p className="text-base text-gray-700 mt-1">{r.basics.title}</p>
+          <p className="text-base text-gray-700 mt-1">{finalBasics.title}</p>
         </header>
 
         {/* Controls (open modal) */}
@@ -254,7 +271,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-gray-800 text-justify">
               <ReactMarkdown components={{ p: "span" }}>
-                {r.summary}
+                {finalSummary}
               </ReactMarkdown>
             </p>
 
@@ -304,9 +321,9 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
 
             {/* quick links row (GitHub / LinkedIn / Portfolio) */}
             <div className="mt-4 flex flex-wrap gap-3">
-              {r.basics.github && (
+              {finalBasics.github && (
                 <a
-                  href={`${r.basics.github}`}
+                  href={`${finalBasics.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1 border rounded text-xs text-indigo-600 hover:bg-indigo-50"
@@ -314,9 +331,9 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                   GitHub
                 </a>
               )}
-              {r.basics.linkedin && (
+              {finalBasics.linkedin && (
                 <a
-                  href={`${r.basics.linkedin}`}
+                  href={`${finalBasics.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1 border rounded text-xs text-indigo-600 hover:bg-indigo-50"
@@ -324,9 +341,9 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                   LinkedIn
                 </a>
               )}
-              {r.basics.portfolio && (
+              {finalBasics.portfolio && (
                 <a
-                  href={`${r.basics.portfolio}`}
+                  href={`${finalBasics.portfolio}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1 border rounded text-xs text-indigo-600 hover:bg-indigo-50"
@@ -334,22 +351,22 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                   Portfolio
                 </a>
               )}
-              {r.basics.email && (
+              {finalBasics.email && (
                 <a
-                  href={`mailto:${r.basics.email}`}
+                  href={`mailto:${finalBasics.email}`}
                   className="px-3 py-1 border rounded text-xs text-indigo-600 hover:bg-indigo-50"
                 >
                   Email
                 </a>
               )}
-              {r.basics.location && (
+              {finalBasics.location && (
                 <p className="px-3 py-1 border rounded text-xs text-indigo-60">
-                  {r.basics.location}
+                  {finalBasics.location}
                 </p>
               )}
-              {r.basics.phone && (
+              {finalBasics.phone && (
                 <p className="px-3 py-1 border rounded text-xs text-indigo-60">
-                  {r.basics.phone}
+                  {finalBasics.phone}
                 </p>
               )}
             </div>
@@ -451,7 +468,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                       {(edu as any).start} – {(edu as any).end}
                     </div>
                   </div>
-                )
+                ),
               )}
             </div>
           </section>
@@ -514,7 +531,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
               Skills
             </h3>
             <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {skills.map((group, idx) => (
+              {finalSkills.map((group, idx) => (
                 <div key={idx}>
                   <div className="font-semibold text-sm text-indigo-600">
                     {group.heading}

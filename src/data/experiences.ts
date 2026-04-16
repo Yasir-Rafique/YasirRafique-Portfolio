@@ -6,6 +6,7 @@ export const experiences = [
     workType: "Remote",
     duration: "January 2024 – Present",
     description: [
+      "Led end-to-end implementation of **Stripe Connect**, designing scalable payment APIs, webhook architecture, and secure onboarding flows, enabling reliable multi-vendor transactions in production",
       "Developed and scaled RESTful APIs using Node.js, optimizing backend logic and database queries for improved performances",
       "Implemented OpenActive standards to enhance data visibility and filtering, ensuring only relevant facilities were displayed",
       "Integrated **OpenActive** into FMF, making client sessions globally visible and driving a **350%+ growth** to new visitor sessions, with **87% direct traffic**, **9% organic search**, and **4% social engagement**",

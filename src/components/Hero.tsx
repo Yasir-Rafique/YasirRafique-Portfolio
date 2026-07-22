@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { assets } from "../domain/assets";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { fadeInUp, staggerContainer } from "../utils/animations";
 
@@ -90,7 +91,7 @@ export default function Hero() {
           variants={fadeInUp}
         >
           <img
-            src="/20240413_162435.jpg"
+            src={assets.profile.path}
             alt="Muhammad Yasir Rafique"
             className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-lg"
             style={{ transform: "scale(1.2)" }}

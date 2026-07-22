@@ -1,6 +1,7 @@
 // src/routes/Testimonial.tsx
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { testimonialAvatarPaths } from "../domain/assets";
 
 export interface TestimonialFormData {
   fullName: string;
@@ -12,15 +13,7 @@ export interface TestimonialFormData {
 
 // ✅ Predefined avatars (stored in public/avatars/)
 const avatarOptions = [
-  "/avatars/Male-1.svg",
-  "/avatars/Female-1.svg",
-  "/avatars/Male-2.svg",
-  "/avatars/Male-3.svg",
-  "/avatars/Female-2.svg",
-  "/avatars/Female-3.svg",
-  "/avatars/Male-4.svg",
-  "/avatars/Male-5.svg",
-  "/avatars/Female-4.svg",
+  ...testimonialAvatarPaths,
   "initials", // 10th option for initials
 ];
 

@@ -10,20 +10,22 @@ import {
   resumeSummary as resumeSummarySG,
   basics as basicsSG,
 } from "../data/summary.sg";
-import experiencesSG from "../data/experiences.sg";
-import skillsSG from "../data/skills.sg";
+import {
+  certifications,
+  education as externalEducation,
+  experiences as externalExperiences,
+  experiencesSingapore as experiencesSG,
+  projects as externalProjects,
+  publications,
+  skills,
+  skillsSingapore as skillsSG,
+} from "../domain/adapters/legacy";
 
-import { experiences as externalExperiences } from "../data/experiences";
-import { education as externalEducation } from "../data/education";
-import { projects as externalProjects } from "../data/projects";
-import skills from "../data/skills";
 import speaking from "../data/speaking";
 import { interests } from "../data/interests";
 import { basics, resumeSummary } from "../data/summary";
 import { latest } from "../data/latest";
-import { certifications } from "../data/certifications";
 import { achievements } from "../data/achievements";
-import { publications } from "../data/publications";
 
 type Basics = {
   name: string;

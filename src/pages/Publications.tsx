@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../utils/animations";
-import { publications } from "../data/publications";
+import { publications } from "../domain/adapters/legacy";
 
 export default function Publications() {
   const [showAllPublications, setShowAllPublications] = useState(false);

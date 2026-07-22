@@ -1,4 +1,5 @@
 // src/data/certifications.ts
+import { assets } from "../domain/assets";
 
 export type Certification = {
   title: string;
@@ -25,7 +26,7 @@ export const certifications: Certification[] = [
       "ChatGPT",
       "Marketing Strategy",
     ],
-    file: "/certifications/Coursera-6TOMPAUZDQUX.pdf",
+    file: assets.certificationIbmAi.path,
     showResume: true,
   },
   {
@@ -41,7 +42,7 @@ export const certifications: Certification[] = [
       "Mobile App Development",
       "Secure Authentication",
     ],
-    file: "/certifications/Course-Certificate.jpg",
+    file: assets.certificationReactNative.path,
     showResume: true,
   },
   {
@@ -58,7 +59,7 @@ export const certifications: Certification[] = [
     date: "May 2023",
     credentialId: "H7NLFXDVL3SD",
     skills: ["Express.js", "GraphQL"],
-    file: "/certifications/Coursera-H7NLFXDVL3SD.pdf",
+    file: assets.certificationGraphql.path,
     //showResume: true,
   },
   {
@@ -67,7 +68,7 @@ export const certifications: Certification[] = [
     date: "Apr 2023",
     credentialId: "R2GGN35ZXVB3",
     skills: ["Amazon Web Services (AWS)"],
-    file: "/certifications/Coursera-R2GGN35ZXVB3.pdf",
+    file: assets.certificationAwsS3.path,
   },
 
   // --- Academic Certifications ---

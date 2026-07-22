@@ -12,7 +12,7 @@ import { renderPDFMarkdown } from "../utils/renderMarkdown";
 // ---- Styles ----
 const styles = StyleSheet.create({
   page: {
-    padding: 30,
+    padding: 20,
     fontSize: 10,
     fontFamily: "Helvetica",
     lineHeight: 1.35,
@@ -249,7 +249,7 @@ export default function ResumePDF(props: ResumePDFProps) {
           <Text style={styles.sectionTitle}>Summary</Text>
           <Text style={styles.smallText}>{renderPDFMarkdown(summary)}</Text>
 
-          {highlights.length > 0 && (
+          {/* {highlights.length > 0 && (
             <View style={{ marginTop: 8 }}>
               <Text
                 style={{ fontSize: 10, fontWeight: "bold", marginBottom: 6 }}
@@ -280,7 +280,7 @@ export default function ResumePDF(props: ResumePDFProps) {
                 </View>
               </View>
             </View>
-          )}
+          )} */}
         </View>
 
         {/* Experience */}

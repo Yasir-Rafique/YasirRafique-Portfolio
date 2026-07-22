@@ -1,4 +1,5 @@
 // src/data/achievements.ts
+import { assets } from "../domain/assets";
 
 export type Proof =
   | { type: "link"; url: string; label?: string }
@@ -28,7 +29,7 @@ export const achievements: Achievement[] = [
     proofs: [
       {
         type: "image",
-        url: "/achievements/FMF-growth.png",
+        url: assets.achievementFmfGrowth.path,
         label: "Visitor & client growth (graph screenshot)",
       },
     ],
@@ -51,7 +52,7 @@ export const achievements: Achievement[] = [
       },
       {
         type: "image",
-        url: "/achievements/GitHub-Achievements.png",
+        url: assets.achievementGithub.path,
         label: "GitHub Achievements (screenshot)",
       },
     ],
@@ -70,12 +71,12 @@ export const achievements: Achievement[] = [
     proofs: [
       {
         type: "image",
-        url: "/achievements/dzone-feature-email.jpg",
+        url: assets.achievementDzoneEmail.path,
         label: "Feature email (screenshot)",
       },
       {
         type: "image",
-        url: "/achievements/dzone-editor-comment.png",
+        url: assets.achievementDzoneComment.path,
         label: "Editor comment on LinkedIn (screenshot)",
       },
       {
@@ -114,12 +115,12 @@ export const achievements: Achievement[] = [
       },
       {
         type: "image",
-        url: "/achievements/C42_Banner.png",
+        url: assets.achievementConf42Email.path,
         label: "Feature email (screenshot)",
       },
       {
         type: "image",
-        url: "/achievements/Conf42-talk-banner.png",
+        url: assets.achievementConf42Banner.path,
         label: "MY Talk Banner (screenshot)",
       },
     ],

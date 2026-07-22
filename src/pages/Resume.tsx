@@ -5,27 +5,10 @@ import ReactMarkdown from "react-markdown";
 
 import { useLocation } from "react-router-dom";
 
-// SG versions
-import {
-  resumeSummary as resumeSummarySG,
-  basics as basicsSG,
-} from "../data/summary.sg";
-import {
-  certifications,
-  education as externalEducation,
-  experiences as externalExperiences,
-  experiencesSingapore as experiencesSG,
-  projects as externalProjects,
-  publications,
-  skills,
-  skillsSingapore as skillsSG,
-} from "../domain/adapters/legacy";
+import { composeResume, type ResumeId } from "../composition";
 
-import speaking from "../data/speaking";
 import { interests } from "../data/interests";
-import { basics, resumeSummary } from "../data/summary";
 import { latest } from "../data/latest";
-import { achievements } from "../data/achievements";
 
 type Basics = {
   name: string;
@@ -95,10 +78,11 @@ type ResumeData = {
   interests?: string[];
 };
 
+const defaultResume = composeResume();
 const sampleData: ResumeData = {
-  basics,
+  basics: defaultResume.basics,
   skillGroups: [],
-  summary: resumeSummary.trim(),
+  summary: defaultResume.summary.trim(),
   highlights: latest,
 };
 
@@ -112,28 +96,29 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
   const params = new URLSearchParams(location.search);
   const market = params.get("market");
 
-  const isSG = market === "sg";
-
-  const finalSummary = isSG ? resumeSummarySG : resumeSummary;
-  const finalBasics = isSG ? basicsSG : basics;
-  const finalExperiences = isSG ? experiencesSG : externalExperiences;
-  const finalSkills = isSG ? skillsSG : skills;
+  const resumeId: ResumeId =
+    market === "sg" ? "singapore" : market === "malaysia" ? "malaysia" : "default";
+  const composed = composeResume(resumeId);
+  const finalSummary = composed.summary;
+  const finalBasics = composed.basics;
+  const finalExperiences = composed.experiences;
+  const finalSkills = composed.skills;
+  const externalEducation = composed.education;
+  const externalProjects = composed.projects;
+  const publications = composed.publications;
+  const certifications = composed.certifications;
+  const achievements = composed.achievements;
+  const speaking = composed.speaking;
 
   const experiencesToShow: ExternalExperience[] = finalExperiences;
 
   // filter secondary sections by showResume flag (only show if showResume === true)
-  const achievementsForResume = (achievements || []).filter(
-    (a: any) => a.showResume === true,
-  );
-  const publicationsForResume = (publications || []).filter(
-    (p: any) => p.showResume === true,
-  );
-  const speakingForResume = (speaking || []).filter(
-    (s: any) => s.showResume === true,
-  );
-  const certificationsForResume = (certifications || []).filter(
-    (c: any) => c.showResume === true,
-  );
+  const {
+    achievements: achievementsForResume,
+    publications: publicationsForResume,
+    speaking: speakingForResume,
+    certifications: certificationsForResume,
+  } = composed.resumeHighlights;
 
   // modal + generator state
   const [showModal, setShowModal] = useState(false);
@@ -170,7 +155,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `Muhammad_Yasir_Rafique_latest_Resume_V3_${pageSize}.pdf`;
+      a.download = composed.outputFilename.replace("{pageSize}", pageSize);
       document.body.appendChild(a);
       a.click();
       a.remove();

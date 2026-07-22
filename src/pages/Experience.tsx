@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../utils/animations";
-import { experiences } from "../domain/adapters/legacy";
+import { composePortfolio } from "../composition";
+
+const { experiences } = composePortfolio();
 
 export default function Experience() {
   const [showAllExperiences, setShowAllExperiences] = useState(false);

@@ -2,10 +2,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { useInView } from "framer-motion";
-import { projects } from "../domain/adapters/legacy";
+import { composePortfolio } from "../composition";
 import { fadeInUp, staggerContainer } from "../utils/animations";
 
 const categories = ["Personal", "Experience", "GitHub"];
+const { projects } = composePortfolio();
 
 export default function Projects() {
   const [active, setActive] = useState("Personal");

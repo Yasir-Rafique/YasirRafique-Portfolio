@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../utils/animations";
-import { publications } from "../domain/adapters/legacy";
+import { composePortfolio } from "../composition";
+
+const { publications } = composePortfolio();
 
 export default function Publications() {
   const [showAllPublications, setShowAllPublications] = useState(false);

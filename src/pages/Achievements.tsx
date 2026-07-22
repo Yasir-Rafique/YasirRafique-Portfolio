@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../utils/animations";
-import { achievements } from "../data/achievements";
+import { composePortfolio } from "../composition";
 import type { Achievement } from "../data/achievements";
+
+const { achievements } = composePortfolio();
 
 export default function Achievements() {
   const [expanded, setExpanded] = useState<boolean[]>(

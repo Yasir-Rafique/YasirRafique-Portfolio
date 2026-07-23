@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { assets } from "../domain/assets";
+import { composePortfolio } from "../composition";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { fadeInUp, staggerContainer } from "../utils/animations";
+
+const { profileImage } = composePortfolio();
 
 export default function Hero() {
   return (
@@ -91,8 +93,8 @@ export default function Hero() {
           variants={fadeInUp}
         >
           <img
-            src={assets.profile.path}
-            alt="Muhammad Yasir Rafique"
+            src={profileImage.src}
+            alt={profileImage.alt}
             className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-lg"
             style={{ transform: "scale(1.2)" }}
           />

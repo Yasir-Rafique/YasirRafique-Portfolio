@@ -1,7 +1,9 @@
 // src/routes/Testimonial.tsx
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { testimonialAvatarPaths } from "../domain/assets";
+import { composePortfolio } from "../composition";
+
+const { testimonialAvatarPaths } = composePortfolio();
 
 export interface TestimonialFormData {
   fullName: string;

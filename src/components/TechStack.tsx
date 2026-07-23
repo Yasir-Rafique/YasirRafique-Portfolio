@@ -1,4 +1,4 @@
-import { techStack } from "../data/techStack";
+import { composePortfolio } from "../composition";
 import { motion } from "framer-motion";
 import {
   //staggerContainer,
@@ -6,6 +6,8 @@ import {
   fadeInUpIcon,
   //hoverEffects,
 } from "../utils/animations";
+
+const { techStack } = composePortfolio();
 
 export default function TechStack() {
   return (

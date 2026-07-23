@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { latest } from "../data/latest";
+import { composePortfolio } from "../composition";
+
+const { latest } = composePortfolio();
 
 export default function Latest() {
   const containerRef = useRef<HTMLDivElement>(null);

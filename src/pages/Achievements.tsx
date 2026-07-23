@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "../utils/animations";
-import { composePortfolio } from "../composition";
-import type { Achievement } from "../data/achievements";
+import { composePortfolio, type AchievementViewModel } from "../composition";
 
 const { achievements } = composePortfolio();
 
@@ -39,7 +38,7 @@ export default function Achievements() {
       >
         {achievements
           .slice(0, showAllAchievements ? achievements.length : 4)
-          .map((a: Achievement, index: number) => {
+          .map((a: AchievementViewModel, index: number) => {
             const desc = expanded[index]
               ? a.description
               : a.description.slice(0, 3);

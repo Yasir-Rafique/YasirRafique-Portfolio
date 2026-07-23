@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 8,
     marginTop: 6,
-    flexWrap: "wrap" as any,
+    flexWrap: "wrap",
   },
   contactLink: {
     color: "#1f6feb",
@@ -144,57 +144,12 @@ export default function ResumePDF(props: ResumePDFProps) {
     basics,
     summary,
     skills,
-    achievements = [],
-    publications = [],
-    speaking = [],
-    certifications = [],
     interests,
     experiences,
     education,
     projects,
     pageSize = "A4",
   } = props;
-
-  // Build highlights (only items with showResume === true)
-  const achForResume = (achievements || [])
-    .filter((a) => a.showResume)
-    .slice(0, 3);
-  const pubForResume = (publications || [])
-    .filter((p) => p.showResume)
-    .slice(0, 3);
-  const certForResume = (certifications || [])
-    .filter((c) => c.showResume)
-    .slice(0, 3);
-  const speakForResume = (speaking || [])
-    .filter((s) => s.showResume)
-    .slice(0, 3);
-
-  const highlights = [
-    ...achForResume.map((a) => ({
-      type: "achievement",
-      title: a.title,
-      meta: `${a.org || ""} ${a.date ? `• ${a.date}` : ""}`,
-    })),
-    ...pubForResume.map((p) => ({
-      type: "publication",
-      title: p.title,
-      meta: `${p.platform || ""} ${p.date ? `• ${p.date}` : ""}`,
-    })),
-    ...certForResume.map((c) => ({
-      type: "cert",
-      title: c.title,
-      meta: `${c.issuer || ""} ${c.date ? `• ${c.date}` : ""}`,
-    })),
-    ...speakForResume.map((s) => ({
-      type: "speaking",
-      title: s.title,
-      meta: `${s.event || ""} ${s.date ? `• ${s.date}` : ""}`,
-    })),
-  ];
-
-  // split highlights into two columns
-  const leftHighlights = highlights.filter((_, i) => i % 2 === 0);
-  const rightHighlights = highlights.filter((_, i) => i % 2 === 1);
 
   // split skills into two columns of groups
   const skillMid = Math.ceil((skills || []).length / 2);

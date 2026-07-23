@@ -5,100 +5,12 @@ import ReactMarkdown from "react-markdown";
 
 import { useLocation } from "react-router-dom";
 
-import { composeResume, type ResumeId } from "../composition";
+import { composeResumeFromSearch } from "../composition";
 
-import { interests } from "../data/interests";
-import { latest } from "../data/latest";
-
-type Basics = {
-  name: string;
-  title: string;
-  email?: string;
-  linkedin?: string;
-  github?: string;
-  portfolio?: string;
-  location?: string;
-  phone?: string;
-};
-
-type ExternalExperience = {
-  role?: string;
-  company?: string;
-  location?: string;
-  workType?: string;
-  duration?: string;
-  description?: string[];
-  stack?: string[];
-  logo?: string;
-  position?: string;
-  start?: string;
-  end?: string;
-  bullets?: string[];
-  technologies?: string[];
-};
-
-type Publication = {
-  title: string;
-  outlet?: string;
-  date?: string;
-  link?: string;
-  showResume?: boolean;
-};
-type Speaking = {
-  title: string;
-  event: string;
-  date?: string;
-  note?: string;
-  showResume?: boolean;
-};
-type Education = {
-  degree: string;
-  institution: string;
-  years?: string;
-  note?: string;
-  start?: string;
-  end?: string;
-  details?: string[];
-};
-
-type SkillGroup = { heading: string; items: string[] };
-
-type ResumeData = {
-  basics: Basics;
-  skillGroups: SkillGroup[];
-  summary: string;
-  highlights: string[];
-  experiences?: ExternalExperience[];
-  publications?: Publication[];
-  speaking?: Speaking[];
-  achievements?: any[];
-  projects?: { name: string; description?: string }[];
-  education?: Education[];
-  additionalActivities?: string[];
-  interests?: string[];
-};
-
-const defaultResume = composeResume();
-const sampleData: ResumeData = {
-  basics: defaultResume.basics,
-  skillGroups: [],
-  summary: defaultResume.summary.trim(),
-  highlights: latest,
-};
-
-export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
-  const r: ResumeData = {
-    ...sampleData,
-    ...(data ?? {}),
-  } as ResumeData;
+export default function ResumeRoute() {
 
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const market = params.get("market");
-
-  const resumeId: ResumeId =
-    market === "sg" ? "singapore" : market === "malaysia" ? "malaysia" : "default";
-  const composed = composeResume(resumeId);
+  const composed = composeResumeFromSearch(location.search);
   const finalSummary = composed.summary;
   const finalBasics = composed.basics;
   const finalExperiences = composed.experiences;
@@ -109,8 +21,9 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
   const certifications = composed.certifications;
   const achievements = composed.achievements;
   const speaking = composed.speaking;
+  const interests = composed.interests;
 
-  const experiencesToShow: ExternalExperience[] = finalExperiences;
+  const experiencesToShow = finalExperiences;
 
   // filter secondary sections by showResume flag (only show if showResume === true)
   const {
@@ -268,7 +181,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                 Portfolio highlights
               </h4>
               <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                {achievementsForResume.slice(0, 3).map((a: any, i: number) => (
+                {achievementsForResume.slice(0, 3).map((a, i) => (
                   <div key={`ach-${i}`} className="">
                     <div className="font-semibold">{a.title}</div>
                     <div className="text-xs text-gray-600 italic">
@@ -277,29 +190,29 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                   </div>
                 ))}
 
-                {publicationsForResume.slice(0, 3).map((p: any, i: number) => (
+                {publicationsForResume.slice(0, 3).map((p, i) => (
                   <div key={`pub-${i}`} className="">
                     <div className="font-semibold">{p.title}</div>
                     <div className="text-xs text-gray-600 italic">
-                      {p.platform || p.outlet} • {p.date}
+                      {p.platform} • {p.date}
                     </div>
                   </div>
                 ))}
                 {certificationsForResume
                   .slice(0, 3)
-                  .map((p: any, i: number) => (
+                  .map((p, i) => (
                     <div key={`pub-${i}`} className="">
                       <div className="font-semibold">{p.title}</div>
                       <div className="text-xs text-gray-600 italic">
-                        {p.platform || p.outlet} • {p.date}
+                        • {p.date}
                       </div>
                     </div>
                   ))}
-                {speakingForResume.slice(0, 3).map((p: any, i: number) => (
+                {speakingForResume.slice(0, 3).map((p, i) => (
                   <div key={`pub-${i}`} className="">
                     <div className="font-semibold">{p.title}</div>
                     <div className="text-xs text-gray-600 italic">
-                      {p.platform || p.outlet} • {p.date}
+                      • {p.date}
                     </div>
                   </div>
                 ))}
@@ -366,19 +279,13 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
             </h3>
             <div className="mt-3 space-y-6">
               {experiencesToShow.map((e, idx) => {
-                const role = e.role ?? e.position ?? "";
-                const company = e.company ?? "";
-                const location = e.location ?? "";
-                const workType = (e as any).workType ?? "";
-                const duration =
-                  (e as any).duration ??
-                  ((e as any).start
-                    ? `${(e as any).start}${
-                        (e as any).end ? ` - ${(e as any).end}` : ""
-                      }`
-                    : "");
-                const bullets = e.description ?? e.bullets ?? [];
-                const stack = e.stack ?? e.technologies ?? [];
+                const role = e.role;
+                const company = e.company;
+                const location = e.location;
+                const workType = e.workType;
+                const duration = e.duration;
+                const bullets = e.description;
+                const stack = e.stack;
 
                 return (
                   <div key={idx} className="flex flex-col">
@@ -428,7 +335,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
               Education
             </h3>
             <div className="mt-3 space-y-4">
-              {(externalEducation ?? sampleData.education ?? []).map(
+              {externalEducation.map(
                 (edu, idx) => (
                   <div
                     key={idx}
@@ -452,7 +359,7 @@ export default function ResumeRoute({ data }: { data?: Partial<ResumeData> }) {
                       ) : null}
                     </div>
                     <div className="text-xs text-gray-600 whitespace-nowrap">
-                      {(edu as any).start} – {(edu as any).end}
+                      {edu.start} – {edu.end}
                     </div>
                   </div>
                 ),

@@ -1,4 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
@@ -32,7 +32,7 @@ export default function Reveal({
     }
   }, [controls, inView]);
 
-  const variants: Record<AnimationType, any> = {
+  const variants: Record<AnimationType, Variants> = {
     "fade-up": {
       hidden: { opacity: 0, y: 50 },
       visible: {

@@ -69,6 +69,17 @@ const skills = canonicalSkills.map((item) => ({
   items: item.items,
 }));
 
+const malaysiaSkills = [
+  skills[0],
+  skills[1],
+  skills[3],
+  {
+    ...skills[2],
+    items: [...skills[2].items, "Version Control: Git"],
+  },
+  skills[4],
+];
+
 const education = canonicalEducation.map((item) => ({
   start: item.start,
   end: item.end,
@@ -113,7 +124,9 @@ export function composePortfolio(profileId: ProfileId = "default"): PortfolioVie
       ? []
       : profile.filters.skillVariant === "singapore"
         ? skillsSingapore
-        : skills,
+        : profile.filters.skillVariant === "malaysia"
+          ? malaysiaSkills
+          : skills,
     education: includes("education") ? education : [],
     certifications: includes("certifications") ? certifications : [],
     achievements: includes("achievements") ? achievements : [],
@@ -147,11 +160,4 @@ export function composeResume(resumeId: ResumeId = "default"): ResumeViewModel {
       speaking: included(portfolio.speaking),
     },
   };
-}
-
-export function composeResumeFromSearch(search: string): ResumeViewModel {
-  const market = new URLSearchParams(search).get("market");
-  const resumeId: ResumeId =
-    market === "sg" ? "singapore" : market === "malaysia" ? "malaysia" : "default";
-  return composeResume(resumeId);
 }

@@ -22,7 +22,9 @@ import { Toaster } from "react-hot-toast";
 export default function App() {
   const location = useLocation();
 
-  const isResume = location.pathname === "/resume";
+  const isResume =
+    location.pathname === "/resume" ||
+    location.pathname.startsWith("/resume/");
   const isTestimonial = location.pathname === "/testimonial";
 
   return (
@@ -90,7 +92,23 @@ export default function App() {
                 </>
               }
             />
-            <Route path="/resume" element={<ResumeRoute />} />
+            <Route path="/resume" element={<ResumeRoute resumeId="default" />} />
+            <Route
+              path="/resume/singapore"
+              element={<ResumeRoute resumeId="singapore" />}
+            />
+            <Route
+              path="/resume/malaysia"
+              element={<ResumeRoute resumeId="malaysia" />}
+            />
+            <Route
+              path="/resume/*"
+              element={
+                <div role="alert" className="py-16 text-center">
+                  Resume not found.
+                </div>
+              }
+            />
             <Route path="/testimonial" element={<TestimonialRoute />} />
           </Routes>
         </main>

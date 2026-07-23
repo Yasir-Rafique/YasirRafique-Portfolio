@@ -3,14 +3,10 @@ import { pdf } from "@react-pdf/renderer";
 import ResumePDF from "../pdf/ResumePDF";
 import ReactMarkdown from "react-markdown";
 
-import { useLocation } from "react-router-dom";
+import { composeResume, type ResumeId } from "../composition";
 
-import { composeResumeFromSearch } from "../composition";
-
-export default function ResumeRoute() {
-
-  const location = useLocation();
-  const composed = composeResumeFromSearch(location.search);
+export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
+  const composed = composeResume(resumeId);
   const finalSummary = composed.summary;
   const finalBasics = composed.basics;
   const finalExperiences = composed.experiences;

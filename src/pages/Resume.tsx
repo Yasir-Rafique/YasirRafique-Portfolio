@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { pdf } from "@react-pdf/renderer";
+import { Download } from "lucide-react";
 import ResumePDF from "../pdf/ResumePDF";
 import ReactMarkdown from "react-markdown";
 
@@ -29,16 +30,14 @@ export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
     certifications: certificationsForResume,
   } = composed.resumeHighlights;
 
-  // modal + generator state
-  const [showModal, setShowModal] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // generate PDF and trigger download for chosen pageSize
-  const generateAndDownload = async (pageSize: "A4" | "A3") => {
+  // Generate the standard A4 PDF and trigger the download.
+  const generateAndDownload = async () => {
     try {
       setIsGenerating(true);
 
-      // Create the PDF document element. ResumePDF should accept pageSize prop.
+      // Create the PDF document with the composed resume data.
       const doc = (
         <ResumePDF
           basics={finalBasics}
@@ -53,7 +52,6 @@ export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
           certifications={certifications}
           achievements={achievements}
           speaking={speaking}
-          pageSize={pageSize}
         />
       );
 
@@ -64,7 +62,7 @@ export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = composed.outputFilename.replace("{pageSize}", pageSize);
+      a.download = composed.outputFilename;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -73,7 +71,6 @@ export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
       console.error("PDF generation failed", err);
     } finally {
       setIsGenerating(false);
-      setShowModal(false);
     }
   };
 
@@ -88,75 +85,18 @@ export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
           <p className="text-base text-gray-700 mt-1">{finalBasics.title}</p>
         </header>
 
-        {/* Controls (open modal) */}
+        {/* Download control */}
         <div className="flex justify-end gap-3 mb-3 print:hidden">
           <button
-            onClick={() => setShowModal(true)}
-            className="px-3 py-1 border rounded-full text-xs"
+            onClick={generateAndDownload}
+            disabled={isGenerating}
+            aria-busy={isGenerating}
+            className="flex items-center gap-2 px-3 py-1 border rounded-full text-xs"
           >
-            Download PDF
+            <Download size={14} aria-hidden="true" />
+            Download Resume
           </button>
         </div>
-
-        {/* Modal */}
-        {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="bg-white rounded-lg p-5 w-[320px] max-w-full">
-              <h3 className="text-lg font-semibold mb-3">Choose PDF format</h3>
-
-              <p className="text-sm text-gray-600 mb-3">
-                Pick layout (estimated pages):
-              </p>
-
-              <div className="space-y-3">
-                <button
-                  disabled={isGenerating}
-                  onClick={() => generateAndDownload("A4")}
-                  className="w-full text-left px-3 py-2 border rounded hover:bg-gray-50"
-                >
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <div className="font-medium">A4</div>
-                      <div className="text-xs text-gray-500">≈ 3 pages</div>
-                    </div>
-                    <div className="text-xs text-gray-500">Download</div>
-                  </div>
-                </button>
-
-                <button
-                  disabled={isGenerating}
-                  onClick={() => generateAndDownload("A3")}
-                  className="w-full text-left px-3 py-2 border rounded hover:bg-gray-50"
-                >
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <div className="font-medium">A3</div>
-                      <div className="text-xs text-gray-500">≈ 2 pages</div>
-                    </div>
-                    <div className="text-xs text-gray-500">Download</div>
-                  </div>
-                </button>
-
-                <div className="flex gap-2 mt-4">
-                  <button
-                    onClick={() => setShowModal(false)}
-                    disabled={isGenerating}
-                    className="flex-1 px-3 py-2 border rounded text-sm"
-                  >
-                    Cancel
-                  </button>
-                  <div className="flex-1">
-                    {isGenerating && (
-                      <div className="text-sm text-gray-600">
-                        Preparing PDF…
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Single-column resume layout (PDF friendly) */}
         <div className="max-w-3xl mx-auto space-y-8">

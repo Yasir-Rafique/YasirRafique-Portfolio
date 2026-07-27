@@ -12,41 +12,41 @@ import { renderPDFMarkdown } from "../utils/renderMarkdown";
 // ---- Styles ----
 const styles = StyleSheet.create({
   page: {
-    padding: 16,
-    fontSize: 8.5,
+    padding: 20,
+    fontSize: 10,
     fontFamily: "Helvetica",
-    lineHeight: 1.2,
+    lineHeight: 1.35,
   },
 
   // Header
   header: {
-    marginBottom: 7,
+    marginBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
-    paddingBottom: 4,
+    paddingBottom: 6,
   },
-  name: { fontSize: 16, fontWeight: "bold" }, // keep left aligned
-  title: { fontSize: 10, marginTop: 5, color: "#333" },
+  name: { fontSize: 18, fontWeight: "bold" }, // keep left aligned
+  title: { fontSize: 11, marginTop: 8, color: "#333" },
   contactRow: {
     flexDirection: "row",
-    gap: 6,
-    marginTop: 4,
+    gap: 8,
+    marginTop: 6,
     flexWrap: "wrap",
   },
   contactLink: {
     color: "#1f6feb",
     textDecoration: "underline",
-    fontSize: 8,
+    fontSize: 9,
     textAlign: "justify", // ensure links wrap neatly
   },
 
   // Sections
-  section: { marginBottom: 7 },
-  sectionTitle: { fontSize: 12, fontWeight: "bold", marginBottom: 4 }, // keep left aligned
-  subTitle: { fontSize: 10, fontWeight: "bold" }, // keep left aligned
-  subHighlight: { fontSize: 8.5, fontWeight: "bold", textAlign: "justify" },
-  smallText: { fontSize: 8.5, color: "#333", textAlign: "justify" }, // 👈 justified
-  listItem: { marginBottom: 1, textAlign: "justify" },
+  section: { marginBottom: 10 },
+  sectionTitle: { fontSize: 14, fontWeight: "bold", marginBottom: 6 }, // keep left aligned
+  subTitle: { fontSize: 12, fontWeight: "bold" }, // keep left aligned
+  subHighlight: { fontSize: 10, fontWeight: "bold", textAlign: "justify" },
+  smallText: { fontSize: 10, color: "#333", textAlign: "justify" }, // 👈 justified
+  listItem: { marginBottom: 2, textAlign: "justify" },
 
   // Highlights
   highlightsGrid: { flexDirection: "row", gap: 8 },
@@ -136,6 +136,7 @@ type ResumePDFProps = {
       source?: string;
     }[];
   };
+  pageSize?: "A3" | "A4";
 };
 
 export default function ResumePDF(props: ResumePDFProps) {
@@ -147,6 +148,7 @@ export default function ResumePDF(props: ResumePDFProps) {
     experiences,
     education,
     projects,
+    pageSize = "A4",
   } = props;
 
   // split skills into two columns of groups
@@ -161,7 +163,7 @@ export default function ResumePDF(props: ResumePDFProps) {
 
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
+      <Page size={pageSize} style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.name}>{basics.name}</Text>
@@ -270,9 +272,6 @@ export default function ResumePDF(props: ResumePDFProps) {
         </View>
 
         {/* Education */}
-      </Page>
-
-      <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Education</Text>
           {education.map((edu, i) => (

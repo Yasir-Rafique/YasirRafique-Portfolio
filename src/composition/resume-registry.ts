@@ -1,10 +1,12 @@
 import type { ProfileId } from "./profile-registry";
+import { academicSections, type AcademicSectionId } from "./academic-cv";
 
-export const resumeIds = ["default", "singapore", "malaysia"] as const;
+export const resumeIds = ["default", "singapore", "malaysia", "phd-academic"] as const;
 export type ResumeId = (typeof resumeIds)[number];
+export type ProfessionalResumeId = Exclude<ResumeId, "phd-academic">;
 
-export interface ResumeConfiguration {
-  id: ResumeId;
+export interface ProfessionalResumeConfiguration {
+  id: ProfessionalResumeId;
   title: string;
   profileId: ProfileId;
   outputFilename: string;
@@ -13,8 +15,23 @@ export interface ResumeConfiguration {
     market: string;
   };
 }
+export interface AcademicResumeConfiguration {
+  id: "phd-academic";
+  title: string;
+  outputFilename: string;
+  sectionOrder: readonly AcademicSectionId[];
+  metadata: { language: string; market: string };
+}
+export type ResumeConfiguration = ProfessionalResumeConfiguration | AcademicResumeConfiguration;
 
 export const resumeRegistry: Record<ResumeId, ResumeConfiguration> = {
+  "phd-academic": {
+    id: "phd-academic",
+    title: "PhD Academic CV",
+    outputFilename: "PhD_Academic_CV_Template.pdf",
+    sectionOrder: academicSections.map(([id]) => id),
+    metadata: { language: "en", market: "academic" },
+  },
   default: {
     id: "default",
     title: "Default Backend Engineer Resume",

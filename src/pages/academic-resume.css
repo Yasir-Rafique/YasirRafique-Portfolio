@@ -1,0 +1,15 @@
+.academic-preview { color: #202020; background: #fff; min-height: 100vh; padding: 16px 0; }
+.academic-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 8px 16px 16px; font: 14px/1.4 system-ui, sans-serif; }
+.academic-controls h1 { font-weight: 600; }
+.academic-controls p { color: #505050; font-size: 12px; }
+.academic-controls a { color: #28383c; text-decoration: underline; margin-right: 16px; }
+.academic-document { display: block; width: 100%; height: calc(100vh - 115px); min-height: 480px; border: 0; background: #fff; }
+/* Pagination, margins and type are defined in academic-styles.ts, rendered
+   into the embedded PDF. Print that document rather than the viewer shell. */
+@media print {
+  body:has(.academic-preview) { background: #fff !important; }
+  body:has(.academic-preview) .academic-controls { display: none; }
+  body:has(.academic-preview) main { max-width: none; padding: 0; margin: 0; }
+  .academic-preview { padding: 0; }
+  .academic-document { width: 100%; height: 100vh; }
+}

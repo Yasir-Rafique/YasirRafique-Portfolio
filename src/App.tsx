@@ -16,6 +16,7 @@ import Publications from "./pages/Publications";
 import Achievements from "./pages/Achievements";
 
 import ResumeRoute from "./pages/Resume";
+import AcademicResumeRoute from "./pages/AcademicResume";
 import { TestimonialRoute } from "./routes/Testimonial";
 import { Toaster } from "react-hot-toast";
 
@@ -29,7 +30,7 @@ export default function App() {
 
   return (
     <>
-      <BackgroundLayout />
+      {location.pathname !== "/resume/phd-academic" && <BackgroundLayout />}
       <div className="min-h-screen">
         {/* Show full navbar except on resume & testimonial */}
         {!isResume && !isTestimonial && <Navbar />}
@@ -93,6 +94,7 @@ export default function App() {
               }
             />
             <Route path="/resume" element={<ResumeRoute resumeId="default" />} />
+            <Route path="/resume/phd-academic" element={<AcademicResumeRoute />} />
             <Route
               path="/resume/singapore"
               element={<ResumeRoute resumeId="singapore" />}

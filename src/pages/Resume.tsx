@@ -4,9 +4,9 @@ import { Download } from "lucide-react";
 import ResumePDF from "../pdf/ResumePDF";
 import ReactMarkdown from "react-markdown";
 
-import { composeResume, type ResumeId } from "../composition";
+import { composeResume, type ProfessionalResumeId } from "../composition";
 
-export default function ResumeRoute({ resumeId }: { resumeId: ResumeId }) {
+export default function ResumeRoute({ resumeId }: { resumeId: ProfessionalResumeId }) {
   const composed = composeResume(resumeId);
   const finalSummary = composed.summary;
   const finalBasics = composed.basics;

@@ -15,7 +15,8 @@ import {
   skills as canonicalSkills,
 } from "../domain/professional-data";
 import { getProfile, type ProfileId } from "./profile-registry";
-import { getResume, type ResumeId } from "./resume-registry";
+import { getResume, type ResumeId, type ProfessionalResumeId } from "./resume-registry";
+import { composeAcademicCv, type AcademicCvViewModel } from "./academic-cv";
 import type {
   CertificationViewModel,
   ExperienceViewModel,
@@ -139,8 +140,12 @@ export function composePortfolio(profileId: ProfileId = "default"): PortfolioVie
   };
 }
 
-export function composeResume(resumeId: ResumeId = "default"): ResumeViewModel {
+export function composeResume(resumeId: "phd-academic"): AcademicCvViewModel;
+export function composeResume(resumeId?: ProfessionalResumeId): ResumeViewModel;
+export function composeResume(resumeId: ResumeId): ResumeViewModel | AcademicCvViewModel;
+export function composeResume(resumeId: ResumeId = "default"): ResumeViewModel | AcademicCvViewModel {
   const resume = getResume(resumeId);
+  if (resume.id === "phd-academic") return composeAcademicCv(resume.outputFilename, resume.sectionOrder);
   const profile = getProfile(resume.profileId);
   const portfolio = composePortfolio(profile.id);
   const onlyResumeHighlights = profile.filters.resumeHighlightsOnly;

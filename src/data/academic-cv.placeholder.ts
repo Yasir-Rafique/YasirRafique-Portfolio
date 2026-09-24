@@ -62,7 +62,7 @@ export const academicCvPlaceholder: AcademicCvData = {
       thesis: {
         label: "Research & Development Project",
         title:
-          "MenuLive Ordering System — QR-Based Real-Time Ordering and Service Management for Hotels and Restaurants",
+          "MenuLive Ordering System - QR-Based Real-Time Ordering and Service Management for Hotels and Restaurants",
         result: "70%",
       },
       details: [],
@@ -84,7 +84,7 @@ export const academicCvPlaceholder: AcademicCvData = {
   researchExperience: [
     {
       id: "experience.independent-rag-research",
-      role: "Independent Researcher — Controlled Evaluation of Retrieval-Augmented Generation Architectures",
+      role: "Independent Researcher - Controlled Evaluation of Retrieval-Augmented Generation Architectures",
       company: "Independent Research",
       duration: "Jul 2026–Sep 2026",
       description: [
@@ -96,7 +96,7 @@ export const academicCvPlaceholder: AcademicCvData = {
     },
     {
       id: "experience.msc-menulive-research",
-      role: "MSc Dissertation Project — MenuLive Ordering System",
+      role: "MSc Dissertation Project - MenuLive Ordering System",
       company: "Northumbria University",
       duration: "2022",
       description: [
@@ -106,7 +106,7 @@ export const academicCvPlaceholder: AcademicCvData = {
     },
     {
       id: "experience.undergraduate-recommender-research",
-      role: "Undergraduate Thesis — Personalized Event Recommender System",
+      role: "Undergraduate Thesis - Personalized Event Recommender System",
       company: "Abasyn University",
       duration: "2019",
       supervisor: "Naveen Ahmad",
@@ -202,7 +202,7 @@ export const academicCvPlaceholder: AcademicCvData = {
     {
       id: "project.scribelens",
       category: "Personal",
-      title: "ScribeLens — Retrieval-Augmented Generation Knowledge Assistant",
+      title: "ScribeLens - Retrieval-Augmented Generation Knowledge Assistant",
       role: "",
       date: "2025–Present",
       description: "",

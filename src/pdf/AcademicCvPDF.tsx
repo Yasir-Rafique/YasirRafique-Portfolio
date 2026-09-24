@@ -1,5 +1,11 @@
 import { Fragment, type ReactNode, type ComponentProps } from "react";
-import { Document, Page, Text as PdfText, View, Link } from "@react-pdf/renderer";
+import {
+  Document,
+  Page,
+  Text as PdfText,
+  View,
+  Link,
+} from "@react-pdf/renderer";
 import type {
   AcademicCvViewModel,
   AcademicSectionId,
@@ -93,7 +99,7 @@ function Bullets({ items }: { items: string[] }) {
 function EducationEntry({ item }: { item: AcademicEducation }) {
   return (
     <AcademicEntry
-      title={[item.degree, item.classification].filter(Boolean).join(" — ")}
+      title={[item.degree, item.classification].filter(Boolean).join(" - ")}
       date={[item.start, item.end].filter(Boolean).join("–")}
       context={item.institution}
       location={item.location}
@@ -255,7 +261,7 @@ export default function AcademicCvPDF({
         short={
           item.id === "experience.msc-menulive-research" ||
           (item.description.length === 0 &&
-          (item.paragraphs?.join(" ").length ?? 0) < 250)
+            (item.paragraphs?.join(" ").length ?? 0) < 250)
         }
       >
         {item.supervisor && (
@@ -286,27 +292,40 @@ export default function AcademicCvPDF({
         ))}
       </View>
     ),
-    experiences: d.experiences.map((item) => item.id === "experience.qjump" ? (
-      <AcademicEntry key={item.id} title={`${item.role} — ${item.company} · ${item.location}`} date={item.duration} compact short>
-        {item.description.map((p, i) => <Paragraph key={i}>{p}</Paragraph>)}
-      </AcademicEntry>
-    ) : (
-      <AcademicEntry
-        key={item.id}
-        title={item.role}
-        date={item.duration}
-        context={item.company}
-        location={[item.location, item.workType].filter(Boolean).join(" · ")}
-        compact={item.compact}
-        short={item.id === "experience.signator" || (item.compact && item.description.join(" ").length < 300)}
-      >
-        {item.compact ? (
-          item.description.map((p, i) => <Paragraph key={i}>{p}</Paragraph>)
-        ) : (
-          <Bullets items={item.description} />
-        )}
-      </AcademicEntry>
-    )),
+    experiences: d.experiences.map((item) =>
+      item.id === "experience.qjump" ? (
+        <AcademicEntry
+          key={item.id}
+          title={`${item.role} - ${item.company} · ${item.location}`}
+          date={item.duration}
+          compact
+          short
+        >
+          {item.description.map((p, i) => (
+            <Paragraph key={i}>{p}</Paragraph>
+          ))}
+        </AcademicEntry>
+      ) : (
+        <AcademicEntry
+          key={item.id}
+          title={item.role}
+          date={item.duration}
+          context={item.company}
+          location={[item.location, item.workType].filter(Boolean).join(" · ")}
+          compact={item.compact}
+          short={
+            item.id === "experience.signator" ||
+            (item.compact && item.description.join(" ").length < 300)
+          }
+        >
+          {item.compact ? (
+            item.description.map((p, i) => <Paragraph key={i}>{p}</Paragraph>)
+          ) : (
+            <Bullets items={item.description} />
+          )}
+        </AcademicEntry>
+      ),
+    ),
     contributions: (
       <>
         {d.projects.length > 0 && (
@@ -385,20 +404,27 @@ export default function AcademicCvPDF({
       item.id === "service.ansec" ? (
         <View key={item.id} style={[s.row, s.compact]} wrap={false}>
           <Text style={[s.primary, s.metadata]}>
-            <Text style={s.title}>{item.title}</Text> — {item.context}
+            <Text style={s.title}>{item.title}</Text> - {item.context}
           </Text>
           <Text style={s.date}>{item.date}</Text>
         </View>
       ) : (
         <AcademicEntry
           key={item.id}
-          title={item.id === "service.codingcoach" ? `${item.title} — ${item.context}` : item.title}
+          title={
+            item.id === "service.codingcoach"
+              ? `${item.title} - ${item.context}`
+              : item.title
+          }
           date={item.date}
           compact
           short={(item.description?.join(" ").length ?? 0) < 250}
         >
           <Text style={s.metadata}>
-            {[...(item.id === "service.codingcoach" ? [] : [item.context]), ...(item.description ?? [])]
+            {[
+              ...(item.id === "service.codingcoach" ? [] : [item.context]),
+              ...(item.description ?? []),
+            ]
               .filter(Boolean)
               .join(" · ")}
           </Text>
@@ -440,8 +466,8 @@ export default function AcademicCvPDF({
                   section.id === "service"
                     ? [s.sectionHeading, s.serviceSectionSpacing]
                     : section.id === "contributions" || section.id === "skills"
-                    ? [s.sectionHeading, s.secondarySectionSpacing]
-                    : s.sectionHeading
+                      ? [s.sectionHeading, s.secondarySectionSpacing]
+                      : s.sectionHeading
                 }
               >
                 {section.title.toUpperCase()}

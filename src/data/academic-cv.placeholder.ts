@@ -99,6 +99,7 @@ export const academicCvPlaceholder: AcademicCvData = {
       role: "MSc Dissertation Project - MenuLive Ordering System",
       company: "Northumbria University",
       duration: "2022",
+      supervisor: "Dr. Sharjeel Aslam",
       description: [
         "Conducted an individual research-and-development project examining QR-based digital ordering and hospitality-service workflows through literature review, requirements analysis, methodology development and research-informed system design.",
         "Designed, implemented and functionally evaluated a multi-role web application using Node.js, Express.js, JavaScript and MongoDB, and produced the complete MSc dissertation under academic supervision.",

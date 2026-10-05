@@ -28,7 +28,7 @@ export const resumeRegistry: Record<ResumeId, ResumeConfiguration> = {
   "phd-academic": {
     id: "phd-academic",
     title: "PhD Academic CV",
-    outputFilename: "PhD_Academic_CV_Template.pdf",
+    outputFilename: "Muhammad Yasir Rafique - Academic CV.pdf",
     sectionOrder: academicSections.map(([id]) => id),
     metadata: { language: "en", market: "academic" },
   },

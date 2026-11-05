@@ -60,6 +60,14 @@ export type InterestViewModel = {
 
 export type TechStackViewModel = typeof sourceTechStack;
 
+export type HighlightViewModel = {
+  id: string;
+  title: string;
+  description: string;
+  link?: string;
+  linkLabel?: string;
+};
+
 export interface PortfolioViewModel {
   profileId: string;
   title: string;
@@ -74,7 +82,7 @@ export interface PortfolioViewModel {
   achievements: AchievementViewModel[];
   speaking: SpeakingViewModel[];
   interests: InterestViewModel[];
-  latest: string[];
+  latest: HighlightViewModel[];
   techStack: TechStackViewModel;
   profileImage: { src: string; alt: string };
   testimonialAvatarPaths: string[];
